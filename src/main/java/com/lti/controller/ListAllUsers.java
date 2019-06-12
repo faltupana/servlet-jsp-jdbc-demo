@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lti.model.beans.User;
 import com.lti.model.dao.UserDao;
+import com.lti.model.dao.UserDaoHibImpl;
 import com.lti.model.dao.UserDaoImpl;
 
 /**
@@ -34,7 +35,8 @@ public class ListAllUsers extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		UserDao dao = new UserDaoImpl();
+		// UserDao dao = new UserDaoImpl();
+		UserDao dao = new UserDaoHibImpl();
 		List<User> userList = dao.getAllUsers();
 		request.setAttribute("userList", userList);
 		RequestDispatcher rd = request.getRequestDispatcher("userList.jsp");

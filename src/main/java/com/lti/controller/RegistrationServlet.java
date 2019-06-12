@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lti.model.beans.User;
 import com.lti.model.dao.UserDao;
+import com.lti.model.dao.UserDaoHibImpl;
 import com.lti.model.dao.UserDaoImpl;
 
 /**
@@ -38,7 +39,8 @@ public class RegistrationServlet extends HttpServlet {
 		String password = (String) request.getParameter("password");
 		String phoneNumber = (String) request.getParameter("phoneNumber");
 		User user = new User(name, phoneNumber, password);
-		UserDao dao = new UserDaoImpl();
+		//UserDao dao = new UserDaoImpl();
+		UserDao dao = new UserDaoHibImpl();
 		int seq = dao.store(user);
 		request.setAttribute("seq", seq);
 		RequestDispatcher rd = request

@@ -1,6 +1,18 @@
 package com.lti.model.beans;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user_table")
 public class User {
+	@Id
+	@SequenceGenerator(name = "sequence", sequenceName = "user_tbale_pk_seq", initialValue = 1000, allocationSize = 0)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence")
 	private int id;
 	private String name;
 	private String phoneNumber;

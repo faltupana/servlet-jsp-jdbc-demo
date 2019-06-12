@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.lti.model.beans.User;
 import com.lti.model.dao.UserDao;
+import com.lti.model.dao.UserDaoHibImpl;
 import com.lti.model.dao.UserDaoImpl;
 
 /**
@@ -44,7 +45,8 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 		String password = (String) request.getParameter("pw");
-		UserDao dao = new UserDaoImpl();
+		//UserDao dao = new UserDaoImpl();
+		UserDao dao = new UserDaoHibImpl();
 		User user = dao.login(id, password);
 		if (user.getId() == id && user.getPassword().equals(password)) {
 			request.setAttribute("user", user);
